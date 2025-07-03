@@ -1,0 +1,21 @@
+*{
+  font-family: A !important;
+}
+.check:hover{
+background-color: rgb(66, 245, 66) !important;
+}
+.eidt:hover{
+  background-color: rgb(238, 67, 67) !important;
+}
+.Cardtoodo:hover{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 0px 7px 7px rgb(59, 46, 46) !important;
+}
+.Cardtoodo{
+  transition: all .5s !important;
+}
+@font-face {
+  font-family: A;
+  src: url(/public/fonts/PlaypenSansArabic-Bold.ttf);
+}
