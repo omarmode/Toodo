@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 // import "./App.css";
@@ -32,7 +32,14 @@ const InfitToodo = [
 import { v4 as uuidv4 } from "uuid";
 import { ToodoContext } from "./contexts/ToodoContext";
 function App() {
-  const [Toodo1, setToodo] = React.useState(InfitToodo);
+  const [Toodo1, setToodo] = useState(() => {
+    const saved = localStorage.getItem("toodos");
+    return saved ? JSON.parse(saved) : InfitToodo;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("toodos", JSON.stringify(Toodo1));
+  }, [Toodo1]);
 
   const [count, setCount] = useState(0);
 
