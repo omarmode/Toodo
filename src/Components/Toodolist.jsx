@@ -44,9 +44,7 @@ function Toodolist() {
     setToodo(update);
     localStorage.setItem("toodos", JSON.stringify(update));
   }
-  const completedToodos = Toodo1.filter((i) => {
-    return i.isCompeleted;
-  });
+  const completedToodos = (Toodo1 || []).filter((i) => i.isCompeleted);
   const nonCompletedToodos = Toodo1.filter((i) => {
     return !i.isCompeleted;
   });
@@ -84,8 +82,13 @@ function Toodolist() {
     );
   });
   React.useEffect(() => {
-    const Stoage = JSON.parse(localStorage.getItem("toodos"));
-    setToodo(Stoage);
+    const storage = localStorage.getItem("toodos");
+    if (storage) {
+      const parsed = JSON.parse(storage);
+      if (Array.isArray(parsed)) {
+        setToodo(parsed);
+      }
+    }
   }, []);
 
   return (
